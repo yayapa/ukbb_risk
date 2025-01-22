@@ -1,0 +1,42 @@
+{
+  "experiment_name": "pancreas_3m_3y_wholebody3d_nonimage_JointWD_InputDO2_pretrainedLR_GRADCAM",
+  "data_dir": "put yours",
+  "early_stopping": false,
+  "early_stopping_patience": 30,
+  "save_results": true,
+  "batch_size": 12,
+  "num_seeds": 5,
+  "random_seed_pool": [1514, 0, 42, 867228, 29847, 31940, 367733, 161904, 7671144, 151],
+  "dropout_rate": 0.0,
+  "tabular_dropout_rate": 0.2,
+  "combine_dropout_rate": 0.1,
+  "tabular_input_dropout_rate": 0.2,
+  "lr": 0.00001,
+  "weight_decay": 0.1,
+  "optimizer": "adamw",
+  //"optimizer": "schedulefree",
+  "labels_file": "put yours/labels/3m_3y/pancreas_3m_3y/labels_with_val.csv",
+  "tabular_features_file": "put yours/labels/3m_3y/pancreas_3m_3y/tabular_final_preprocessed/nonimage_tabular.csv",
+  //"tabular_features_file": null,
+  "seed": 42,
+  "scheduler": "cosine_constant",  // "step" or "cosine_constant"
+  "warmup_epochs": 20,
+  "min_lr": 1e-8, // 1e-7
+  //"scheduler": "step",
+  //"scheduler_step_size": 20,
+  //"scheduler_gamma": 0.1,
+  "shuffle": true,
+  "num_workers": 4,
+  "prefetch_factor": 2,
+  "num_epochs": 100,
+  "data_transforms": ["default"],
+  "normalization_values": {"mean": [null], "std": [null]},
+  "mode": "tabular+image",  // "image" or "tabular" or "tabular+image"
+  "model_names": ["JointModuleResNet18_3D"], //resnet18_3d "JointModuleResNet18_3D"
+  "tabular_hidden_layers": [128, 512], // [128, 512]
+  "combine_hidden_layers": [256, 128], // [256, 128]
+  "input_modality": "whole_body_3d_wat_fat",
+  "resume_dir": null,
+  "restore_image_model_path": "put yours/saved/experiments/2024-09-07_17-08-57/", //pancreas
+  "num_classes": 2
+}
