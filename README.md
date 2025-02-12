@@ -1,8 +1,8 @@
-# AI-driven Risk Assessment of Chronic Diseases Using Images and Image-Derived Features in UK Biobank
+# AI-driven Preclinical Disease Risk Assessment Using Imaging in UK Biobank
 ## Info
-Code to the paper "AI-driven Risk Assessment of Chronic Diseases Using Images and Image-Derived Features in UK Biobank"
+Code to the paper "AI-driven Preclinical Disease Risk Assessment Using Imaging in UK Biobank"
 
-The paths and configuration files are removed for privacy reasons. The code is provided as is.
+This is a copy of the code from the cluster. The paths and configuration files are removed for privacy reasons. The code is provided as is.
 
 The structure of the code is as follows:
 1. **_PrepareDataset_** implements the data preparation and dataset constructions using UK Biobank ICD-code sources 
