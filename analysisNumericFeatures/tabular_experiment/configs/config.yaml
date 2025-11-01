@@ -1,6 +1,6 @@
 experiment:
   name: "results_val"
-  description: "trying improve fusion"
+  description: "trying to improve fusion"
 random_seed: [1514, 0, 42, 867228, 29847]
 mode: "val"
 remove_categories:
@@ -15,8 +15,8 @@ optimization:
   timeout: 900
 
 paths:
-  results: "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results"
-  datasets: "/home/dmitrii/GitHub/ukbb_risk_assessment/PrepareDataset/resources/3m_3y"
+  results: "put_yours/results"
+  datasets: "put_yours"
 
 datasets:
   - "cvd2_3m_3y"
@@ -28,27 +28,8 @@ datasets:
   - "osteoarthritis_3m_3y"
 
 feature_pools:
-  #non_image:
-  #  - "nonimage_tabular.csv"
-  #cardiac_features:
-  #  - "cardiac_tabular.csv"
-  #total_segmentator:
-  #  - "total_radiomics_prostate_mrmr_20.csv"
-    #- "total_radiomics_prostate_urinary_mrmr_20.csv"
-  #non_image+cardiac:
-  #  - "nonimage_tabular.csv"
-  #  - "cardiac_tabular.csv"
-  #cardiac+total_segmentator:
-  #  - "cardiac_tabular.csv"
-  #  - "total_radiomics_mrmr_20.csv"
-  #non_image+cardiac+total_segmentator:
-  #  - "nonimage_tabular.csv"
-  #  - "cardiac_tabular.csv"
-  #  - "total_radiomics_mrmr_20.csv"
   non_image+total_segmentator:
-    - "nonimage_total_mrmr_20.csv"
-    - "nonimage_tabular.csv"
-    - "total_radiomics_mrmr_20.csv"
+    - "put_yours"
 
 models:
   MLP:
