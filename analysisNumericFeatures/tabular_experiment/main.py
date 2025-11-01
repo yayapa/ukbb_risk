@@ -6,7 +6,7 @@ import numpy as np
 import yaml
 import sys
 import os
-sys.path.append("/home/dmitrii/GitHub/ukbb_risk_assessment")
+sys.path.append("put_yours")
 from PrepareDataset.DataEncoder.PreprocessLogger import PreprocessLogger
 from ModelTrainer import ModelTrainer
 from ModelTrainerNested import ModelTrainerNested
@@ -120,7 +120,7 @@ def convert_scientific_notation(config):
 import warnings
 warnings.filterwarnings('ignore')
 
-with open("/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/configs/config.yaml", "r") as config_file:
+with open("put_yours/config.yaml", "r") as config_file:
     config = yaml.safe_load(config_file)
 
 convert_scientific_notation(config)
