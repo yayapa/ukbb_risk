@@ -5,7 +5,7 @@ import numpy as np
 
 from PrepareDataset.utils import *
 
-current_dir = "/home/dmitrii/GitHub/ukbb_risk_assessment/tabular/"
+current_dir = "put_yours"
 
 age = ["21003-2.0"]
 sex = ["31-0.0"]
