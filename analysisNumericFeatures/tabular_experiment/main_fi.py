@@ -9,44 +9,16 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import balanced_accuracy_score, f1_score, roc_auc_score
 import json
 
-RESULTS_PATH = "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_cv_fi_best_3"
+RESULTS_PATH = "put_yours"
 #DATASET = "total_segmentator"
 DATASET = "non_image+total_segmentator"
 MODELS = {
-    #"cvd2_3m_3y": {
-    #    #"RF": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-12-02 21:06:10/cvd2_3m_3y/total_segmentator/validation/RF",
-    #    "XGB": f"/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-12-02 21:06:10/cvd2_3m_3y/{DATASET}/validation/XGB",
-    #},
-    "pancreas_3m_3y": {
-        #"RF": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-18 15:14:25/pancreas_3m_3y/total_segmentator/validation/RF",
-        "XGB": f"/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-18 15:14:25/pancreas_3m_3y/{DATASET}/validation/XGB",
-    },
     "liver_3m_3y": {
-        "RF": f"/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-18 15:14:25/liver_3m_3y/{DATASET}/validation/RF",
-        #"XGB": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-18 15:14:25/liver_3m_3y/total_segmentator/validation/XGB",
+        "RF": f"put_yours",
     },
-    #"cancer_3m_3y": {
-    #    #"RF": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-18 15:14:25/cancer_3m_3y/total_segmentator/validation/RF",
-    #    #"XGB": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-18 15:14:25/cancer_3m_3y/total_segmentator/validation/XGB",
-    #    'XGB': f"/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-12-08 09:47:17/cancer_3m_3y/{DATASET}/validation/XGB"
-    #},
-    #"copd_3m_3y":  {
-    #    #"RF": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-12-02 21:06:10/copd_3m_3y/total_segmentator/validation/RF",
-    #    #"XGB": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-12-02 21:06:10/copd_3m_3y/total_segmentator/validation/XGB",
-    #    "RF": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-12-08 23:10:50/copd_3m_3y/non_image+total_segmentator/validation/RF",
-    #},
-    #"ckd_3m_3y": {
-        #"RF": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-18 15:14:25/ckd_3m_3y/total_segmentator/validation/RF",
-    #    "XGB": f"/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-18 15:14:25/ckd_3m_3y/{DATASET}/validation/XGB"
-    #},
-    #"osteoarthritis_3m_3y": {
-    #    #"RF": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-19 10:15:01/osteoarthritis_3m_3y/total_segmentator/validation/RF",
-    #    #"XGB": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-11-19 10:15:01/osteoarthritis_3m_3y/total_segmentator/validation/XGB"
-    #    "XGB": "/home/dmitrii/GitHub/ukbb_risk_assessment/analysisNumericFeatures/tabular_experiment/results/results_val/2024-12-08 23:10:50/copd_3m_3y/non_image+total_segmentator/validation/XGB",
-    #},
 }
 
-CATEGORIES = pd.read_csv('/home/dmitrii/GitHub/ukbb_risk_assessment/results_pca/Total_Segmentator_Categories.csv')
+CATEGORIES = pd.read_csv('put_yours')
 
 MODEL_DICT = {
     "RF": RandomForestClassifier,
@@ -85,8 +57,8 @@ def get_category_dict(dataset):
             CATEGORY_DICT[category] = [feature]
 
 
-    features = pd.read_csv(f'/home/dmitrii/GitHub/ukbb_risk_assessment/PrepareDataset/resources/3m_3y/{dataset}/tabular_final_preprocessed/total_radiomics_tabular.csv', nrows=1)
-    features_nonimage = pd.read_csv(f'/home/dmitrii/GitHub/ukbb_risk_assessment/PrepareDataset/resources/3m_3y/{dataset}/tabular_final_preprocessed/nonimage_tabular.csv')
+    features = pd.read_csv(f'put_yours', nrows=1)
+    features_nonimage = pd.read_csv(f'put_yours')
     features = features.drop(columns=['eid'])
     features = features.columns
     category_dict = {}
@@ -156,8 +128,8 @@ def calculate_category_importance(predictor, X_test, y_test, metric_fn, category
 
 def calculate_feature_importances_val():
     for mode, mode_dict in MODELS.items():
-        labels = f"/home/dmitrii/GitHub/ukbb_risk_assessment/PrepareDataset/resources/3m_3y/{mode}/labels_with_val.csv"
-        data = f"/home/dmitrii/GitHub/ukbb_risk_assessment/PrepareDataset/resources/3m_3y/{mode}/tabular_final_preprocessed/total_radiomics_mrmr_20.csv"
+        labels = f"put_yours"
+        data = f"put_yours"
         labels = pd.read_csv(labels)
         data = pd.read_csv(data)
         data = data.merge(labels, how="inner", on="eid")
@@ -225,9 +197,9 @@ def calculate_feature_importances_cv():
         category_dict = get_category_dict(mode)
         #if mode != "cancer_3m_3y":
         #    continue
-        labels = f"/home/dmitrii/GitHub/ukbb_risk_assessment/PrepareDataset/resources/3m_3y/{mode}/labels_with_val.csv"
-        data = f"/home/dmitrii/GitHub/ukbb_risk_assessment/PrepareDataset/resources/3m_3y/{mode}/tabular_final_preprocessed/total_radiomics_mrmr_20.csv"
-        data_nonimage = f"/home/dmitrii/GitHub/ukbb_risk_assessment/PrepareDataset/resources/3m_3y/{mode}/tabular_final_preprocessed/nonimage_tabular.csv"
+        labels = f"put_yours"
+        data = f"put_yours"
+        data_nonimage = f"put_yours"
         labels = pd.read_csv(labels)
         data = pd.read_csv(data)
         data_nonimage = pd.read_csv(data_nonimage)
